@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+    <style>
+        div{
+            font-size: 60px;
+        }
+        body{
+   
+            background-color: rgb(221, 134, 134);
+            background-repeat: no-repeat;
+            background-size: 850px;
+            text-align: center;
+            align-content: center;
+            align-items: center;
+            align-self: center;
+            background-image: url(https://wallpapercave.com/wp/wp2729921.gif);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            color: crimson;
+            vertical-align: middle;
+        }
+        button{
+            height: 48px;
+            background-color: rgb(233, 208, 98);
+            width: 58px;
+            font-size: 29px;
+            margin: 3px;
+            vertical-align: top;
+            border-radius: 100%;
+        }
+        .Comandos{background-color: rgb(221, 134, 134);
+            font-size: 25px;
+            border-style: solid;
+            height: 45px;
+            width: 100px;
+            border-radius: 5%;   
+        }
+        .center button{
+        background-image: url(https://www.significados.com.br/foto/arco-iris-cores-em-sequencia.png);
+        background-size:cover;
+        background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+    <button class='a' id="btnTeste1" onclick="calcular(1)"></button>
+    <button class='a'id="btnTeste2" onclick="calcular(2)"></button>
+    <button class='a'id="btnTeste3" onclick="calcular(3)"></button>
+    <br>
+    <button class='a' id="btnTeste4" onclick="calcular(4)"></button>
+    <button class='a' id="btnTeste5" onclick="calcular(5)"></button>
+    <button class='a' id="btnTeste6" onclick="calcular(6)"></button>
+    <br>
+    <button class='a' id="btnTeste7" onclick="calcular(7)"></button>
+    <button class='a' id="btnTeste8" onclick="calcular(8)"></button>
+    <button class='a' id="btnTeste9" onclick="calcular(9)"></button> 
+</div>
+    <br>
+    <button class="Comandos" onclick="reset()">RESET</button> <br>
+    <button class="Comandos" onclick="ajuda()">AJUDA</button>
+    <div id="divResultado"></div>
+    <div id='divAjuda'></div>
+    <div id="divGif"></div>
+<br>
+    <script>
+        proximaJogada = 'X'
+        contadorJ=0
+        console.log(contadorJ)
+        var vencedor=0
+
+        function calcular(botao){
+            var identificador="btnTeste"+botao
+            if(document.getElementById(identificador).innerText==''&&vencedor==0){
+                document.getElementById(identificador).innerText = proximaJogada
+                contadorJ=contadorJ+1
+                
+                if(proximaJogada == 'X'){
+                    proximaJogada= 'O'
+                }else{
+                    proximaJogada='X'
+                }
+                verificarVencedor()
+            }
+        }
+        function verificarVencedor(){
+            var b1=document.getElementById("btnTeste1").innerText
+            var b2=document.getElementById("btnTeste2").innerText
+            var b3=document.getElementById("btnTeste3").innerText
+            var b4=document.getElementById("btnTeste4").innerText
+            var b5=document.getElementById("btnTeste5").innerText
+            var b6=document.getElementById("btnTeste6").innerText
+            var b7=document.getElementById("btnTeste7").innerText
+            var b8=document.getElementById("btnTeste8").innerText
+            var b9=document.getElementById("btnTeste9").innerText 
+            //horizontal
+            if(b1==b2&&b2==b3&&b1!=""){
+                vencedor=b1
+                document.getElementById('divResultado').innerHTML=`${b1} é o vencedor!`
+            }
+            if(b4==b5&&b5==b6&&b4!=""){
+                vencedor=b4
+                document.getElementById('divResultado').innerHTML=`${b4} é o vencedor!`
+            }
+            if(b7==b8&&b8==b9&&b7!=""){
+                vencedor=b7
+                document.getElementById('divResultado').innerHTML=`${b7} é o vencedor!`
+            }
+            //vertical
+            if(b1==b4&&b4==b7&&b1!=""){
+                vencedor=b1
+                document.getElementById('divResultado').innerHTML=`${b1} é o vencedor!`
+            }
+            if(b2==b5&&b5==b8&&b2!=""){
+                vencedor=b2
+                document.getElementById('divResultado').innerHTML=`${b2} é o vencedor!`
+            }
+            if(b3==b6&&b6==b9&&b3!=""){
+                vencedor=b3
+                document.getElementById('divResultado').innerHTML=`${b3} é o vencedor!`
+            }
+            //diagonais
+            if(b1==b5&&b5==b9&&b1!=""){
+                vencedor=b1
+                document.getElementById('divResultado').innerHTML=`${b1} é o vencedor!`
+            }
+            if(b3==b5&&b5==b7&&b3!=""){
+                vencedor=b3
+                document.getElementById('divResultado').innerHTML=`${b3} é o vencedor!`
+            }
+            //empate
+            if(contadorJ==9&&vencedor==0){
+                document.getElementById('divResultado').innerHTML='EMPATE!'
+            }
+            if(vencedor!=0){
+                document.getElementById('divGif').innerHTML="<img src='https://c.tenor.com/zUsPiUP3pQQAAAAd/shrek-dancing.gif' width='25%' height='25%'>"
+            }
+        }
+        function ajuda(){
+            document.getElementById('divAjuda').innerHTML="<iframe width='683' height='384' src='https://www.youtube.com/embed/rnuyfRMN4lg' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
+            document.getElementById('divGif').innerHTML=""
+        }
+        function reset(){
+        document.getElementById('btnTeste1').innerText = ""
+        document.getElementById('btnTeste2').innerText = ""
+        document.getElementById('btnTeste3').innerText = ""
+        document.getElementById('btnTeste4').innerText = ""
+        document.getElementById('btnTeste5').innerText = ""
+        document.getElementById('btnTeste6').innerText = ""
+        document.getElementById('btnTeste7').innerText = ""
+        document.getElementById('btnTeste8').innerText = ""
+        document.getElementById('btnTeste9').innerText = ""
+        document.getElementById('divResultado').innerHTML = ""
+        proximaJogada='X'
+        contadorJ=0
+        vencedor=0
+        document.getElementById('divGif').innerHTML=""
+        document.getElementById('divAjuda').innerHTML=""
+    }
+    </script>
+</body>
+</html>
