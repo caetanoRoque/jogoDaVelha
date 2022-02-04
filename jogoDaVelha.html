@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Velha</title>
     <style>
+        *, html{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          text-decoration: none;
+        }
+
         div{
             font-size: 60px;
         }
         body{
-   
+
             background-color: rgb(221, 134, 134);
             background-repeat: no-repeat;
             background-size: 850px;
@@ -17,33 +24,42 @@
             align-content: center;
             align-items: center;
             align-self: center;
-            background-image: url(https://wallpapercave.com/wp/wp2729921.gif);
+            background-image: url(tema.jpg);
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
-            color: crimson;
+            color: rgb(247, 175, 175);
             vertical-align: middle;
         }
         button{
             height: 48px;
-            background-color: rgb(233, 208, 98);
+            background-color: rgb(233, 208, 98, 0.5);
             width: 58px;
             font-size: 29px;
             margin: 3px;
             vertical-align: top;
             border-radius: 100%;
+            border: 1px;
         }
-        .Comandos{background-color: rgb(221, 134, 134);
+        .Comandos{background-color: rgba(159, 40, 228, 0.541);
             font-size: 25px;
             border-style: solid;
             height: 45px;
             width: 100px;
-            border-radius: 5%;   
+            border-radius: 10%;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
         .center button{
-        background-image: url(https://www.significados.com.br/foto/arco-iris-cores-em-sequencia.png);
-        background-size:cover;
-        background-repeat: no-repeat;
+        background-color: crimson;
+        opacity: 90%;
+
+        }
+        .center {
+          margin-top: 5%;
+        }
+
+        #divGif{
+          margin-top: 15px;
         }
     </style>
 </head>
@@ -59,7 +75,7 @@
     <br>
     <button class='a' id="btnTeste7" onclick="calcular(7)"></button>
     <button class='a' id="btnTeste8" onclick="calcular(8)"></button>
-    <button class='a' id="btnTeste9" onclick="calcular(9)"></button> 
+    <button class='a' id="btnTeste9" onclick="calcular(9)"></button>
 </div>
     <br>
     <button class="Comandos" onclick="reset()">RESET</button> <br>
@@ -79,7 +95,7 @@
             if(document.getElementById(identificador).innerText==''&&vencedor==0){
                 document.getElementById(identificador).innerText = proximaJogada
                 contadorJ=contadorJ+1
-                
+
                 if(proximaJogada == 'X'){
                     proximaJogada= 'O'
                 }else{
@@ -97,7 +113,7 @@
             var b6=document.getElementById("btnTeste6").innerText
             var b7=document.getElementById("btnTeste7").innerText
             var b8=document.getElementById("btnTeste8").innerText
-            var b9=document.getElementById("btnTeste9").innerText 
+            var b9=document.getElementById("btnTeste9").innerText
             //horizontal
             if(b1==b2&&b2==b3&&b1!=""){
                 vencedor=b1
